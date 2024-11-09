@@ -38,7 +38,7 @@
         }
     </script>
     <div style="display: flex;justify-content: center;">
-        <button onclick="getdata()" ,style="display:flex;justify-content: center ;">task</button>
+        <button onclick="getdata()" style="display:flex;justify-content: center ;">task</button>
     </div>
     <ol id="task-list"></ol>
 </body>
