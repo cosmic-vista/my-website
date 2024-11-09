@@ -1,0 +1,46 @@
+//this is my website made by me with user task are stored in in memeory array 
+//which can be changed by put,get,post and delete request
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>taskapp</title>
+    <script src="server.js"></script>
+</head>
+
+<body style="background-color:blanchedalmond;">
+
+    <h2 style="display:flex;justify-content: center;text-decoration:underline;">WELCOME TO TASK MANAGER</h2>
+    <div style="display: flex; justify-content: center;">
+        <img src="TASK.jpg" alt="Task Image">
+    </div>
+    <script>
+        async function getdata() {
+            const response = await fetch("http://localhost:6969/tasks");
+            const finaldata = await response.json()
+            console.log(finaldata)
+            // Loop through the tasks in finaldata and display them in the list
+            const taskList = document.getElementById('task-list');  // Find the <ul> element
+
+            finaldata.forEach((task) => {  // Loop through each task
+                const li = document.createElement('li');  // Create a new <li> element
+                li.textContent = `${task.title}:
+                 ${task.description}
+                  - ${task.completed ? 'Completed' : 'Not Completed'}`;  // Set the text of the <li>
+
+                taskList.appendChild(li);  // Append the <li> to the <ul> (taskList)
+            });
+
+        }
+    </script>
+    <div style="display: flex;justify-content: center;">
+        <button onclick="getdata()" ,style="display:flex;justify-content: center ;">task</button>
+    </div>
+    <ol id="task-list"></ol>
+</body>
+
+</html>
